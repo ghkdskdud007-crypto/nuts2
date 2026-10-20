@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>특수학교 1학년 견과류 포장하기 🌰</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jua&family=Nanum+Round:wght@400;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- 최상단 헤더 네비게이션 -->
+  <header class="app-header">
+    <div class="logo-area">
+      <span class="logo-icon">🌰</span>
+      <h1 class="app-title">견과류 포장하기</h1>
+      <span class="grade-badge">특수학교 1학년 직업체험</span>
+    </div>
+
+    <!-- 페이지 이동 탭 (아이패드 가로 최적화 대형 탭) -->
+    <nav class="nav-tabs">
+      <button class="nav-btn active" data-page="page1">
+        <span class="btn-icon">🔍</span>
+        <span class="btn-text">1. 견과류 알아보기</span>
+      </button>
+      <button class="nav-btn" data-page="page2">
+        <span class="btn-icon">🧺</span>
+        <span class="btn-text">2. 활동 1: 포장 연습하기</span>
+      </button>
+      <button class="nav-btn" data-page="page3">
+        <span class="btn-icon">📹</span>
+        <span class="btn-text">3. 활동 2: 실제 포장하기</span>
+      </button>
+      <button class="nav-btn" data-page="page4">
+        <span class="btn-icon">🏷️</span>
+        <span class="btn-text">4. 활동 3: 검수 & 라벨붙이기</span>
+      </button>
+    </nav>
+
+    <!-- 사운드 및 편의 기능 컨트롤 -->
+    <div class="quick-controls">
+      <button id="ttsReplayBtn" class="ctrl-btn" title="음성 다시 듣기">
+        🔊 <span class="ctrl-label">다시 듣기</span>
+      </button>
+      <button id="soundToggleBtn" class="ctrl-btn" title="소리 켜기/끄기">
+        🔔 <span class="ctrl-label">효과음</span>
+      </button>
+      <button id="fullscreenBtn" class="ctrl-btn" title="전체화면">
+        ⛶ <span class="ctrl-label">전체화면</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- 실시간 자막 / 음성 안내 말풍선 (청각 및 시각 이중 지원) -->
+  <aside class="voice-assistant-bar">
+    <div class="assistant-avatar">👩‍🏫</div>
+    <div class="speech-bubble" id="globalSpeechBubble">
+      <span id="speechText">반가워요! 견과류의 이름을 알아보고 퀴즈를 풀어보세요.</span>
+    </div>
+    <button id="speakNowBtn" class="speak-btn" title="말하기">🗣️</button>
+  </aside>
+
+  <!-- 메인 컨텐츠 영역 -->
+  <main class="app-main">
+    
+    <!-- ==============================================
+         1. 첫번째 페이지: 견과류 알아보기 & 이름 맞추기 퀴즈
+         ============================================== -->
+    <section id="page1" class="page-section active">
+      <div class="sub-nav">
+        <button class="sub-tab-btn active" data-sub="sub1-learn">
+          📖 1단계: 견과류 눌러서 이름 알기
+        </button>
+        <button class="sub-tab-btn" data-sub="sub1-quiz">
+          🎯 2단계: 견과류 이름 맞추기 게임
+        </button>
+      </div>
+
+      <!-- 1-1. 견과류 알아보기 (누르면 이름/소리 출력) -->
+      <div id="sub1-learn" class="sub-section active">
+        <div class="section-guide-banner">
+          <p class="guide-text">👉 견과류 카드를 <strong>손가락으로 콕!</strong> 눌러보세요. 이름과 모양을 배울 수 있어요!</p>
+        </div>
+
+        <div class="nut-card-grid">
+          <!-- 아몬드 카드 -->
+          <div class="nut-card" data-nut="almond">
+            <div class="nut-img-box">
+              <svg class="nut-svg" viewBox="0 0 160 160">
+                <defs>
+                  <radialGradient id="almondGrad" cx="40%" cy="35%" r="65%">
+                    <stop offset="0%" stop-color="#e8b887"/>
+                    <stop offset="60%" stop-color="#b6733a"/>
+                    <stop offset="100%" stop-color="#7a4216"/>
+                  </radialGradient>
+                </defs>
+                <path d="M80 15 C115 45, 140 90, 125 125 C110 150, 50 150, 35 125 C20 90, 45 45, 80 15 Z" fill="url(#almondGrad)" stroke="#5c300d" stroke-width="3"/>
+                <!-- 디테일 주름선 -->
+                <path d="M80 30 Q88 75 80 135" stroke="#f3caa1" stroke-width="2.5" fill="none" opacity="0.6"/>
+                <path d="M60 50 Q55 85 62 125" stroke="#602e08" stroke-width="2" fill="none" opacity="0.4"/>
+                <path d="M100 50 Q105 85 98 125" stroke="#602e08" stroke-width="2" fill="none" opacity="0.4"/>
+                <!-- 귀여운 눈망울과 미소 -->
+                <circle cx="68" cy="85" r="4" fill="#301502"/>
+                <circle cx="92" cy="85" r="4" fill="#301502"/>
+                <circle cx="70" cy="83" r="1.5" fill="#ffffff"/>
+                <circle cx="94" cy="83" r="1.5" fill="#ffffff"/>
+                <path d="M74 95 Q80 102 86 95" stroke="#301502" stroke-width="2" fill="none" stroke-linecap="round"/>
+                <ellipse cx="60" cy="92" rx="4" ry="2.5" fill="#ff9999" opacity="0.6"/>
+                <ellipse cx="100" cy="92" rx="4" ry="2.5" fill="#ff9999" opacity="0.6"/>
+              </svg>
+            </div>
+            <button class="nut-name-btn">
+              <span class="touch-badge">👆 터치</span>
+              <span class="nut-name">아몬드</span>
+            </button>
+            <p class="nut-desc">길쭉하고 고소해요</p>
+          </div>
+
+          <!-- 호두 카드 -->
+          <div class="nut-card" data-nut="walnut">
+            <div class="nut-img-box">
+              <svg class="nut-svg" viewBox="0 0 160 160">
+                <defs>
+                  <radialGradient id="walnutGrad" cx="35%" cy="35%" r="65%">
+                    <stop offset="0%" stop-color="#eed5b2"/>
+                    <stop offset="60%" stop-color="#be8a56"/>
+                    <stop offset="100%" stop-color="#7c4f27"/>
+                  </radialGradient>
+                </defs>
+                <!-- 둥글고 울퉁불퉁한 호두 외형 -->
+                <path d="M80 18 C115 15, 142 50, 140 90 C138 125, 115 145, 80 145 C45 145, 22 125, 20 90 C18 50, 45 15, 80 18 Z" fill="url(#walnutGrad)" stroke="#593414" stroke-width="3"/>
+                <path d="M80 18 L80 145" stroke="#593414" stroke-width="3.5" stroke-linecap="round"/>
+                <!-- 뇌 모양 주름 표현 -->
+                <path d="M45 45 Q70 65 50 85 Q70 105 45 125" stroke="#703f16" stroke-width="3" fill="none" stroke-linecap="round"/>
+                <path d="M115 45 Q90 65 110 85 Q90 105 115 125" stroke="#703f16" stroke-width="3" fill="none" stroke-linecap="round"/>
+                <!-- 표정 -->
+                <circle cx="62" cy="72" r="4" fill="#301502"/>
+                <circle cx="98" cy="72" r="4" fill="#301502"/>
+                <circle cx="64" cy="70" r="1.5" fill="#ffffff"/>
+                <circle cx="100" cy="70" r="1.5" fill="#ffffff"/>
+                <path d="M72 82 Q80 88 88 82" stroke="#301502" stroke-width="2" fill="none" stroke-linecap="round"/>
+                <ellipse cx="55" cy="78" rx="4" ry="2.5" fill="#ff9999" opacity="0.6"/>
+                <ellipse cx="105" cy="78" rx="4" ry="2.5" fill="#ff9999" opacity="0.6"/>
+              </svg>
+            </div>
+            <button class="nut-name-btn">
+              <span class="touch-badge">👆 터치</span>
+              <span class="nut-name">호두</span>
+            </button>
+            <p class="nut-desc">울퉁불퉁 동글동글해요</p>
+          </div>
+
+          <!-- 피칸 카드 -->
+          <div class="nut-card" data-nut="pecan">
+            <div class="nut-img-box">
+              <svg class="nut-svg" viewBox="0 0 160 160">
+                <defs>
+                  <radialGradient id="pecanGrad" cx="35%" cy="30%" r="70%">
+                    <stop offset="0%" stop-color="#c97c5d"/>
+                    <stop offset="60%" stop-color="#934628"/>
+                    <stop offset="100%" stop-color="#55220c"/>
+                  </radialGradient>
+                </defs>
+                <!-- 타원형 피칸 외형 -->
+                <ellipse cx="80" cy="80" rx="46" ry="65" fill="url(#pecanGrad)" stroke="#451805" stroke-width="3"/>
+                <!-- 세로 줄무늬 홈 -->
+                <path d="M80 20 L80 140" stroke="#451805" stroke-width="3" stroke-linecap="round"/>
+                <path d="M62 30 Q65 80 62 130" stroke="#f0a58a" stroke-width="2.5" fill="none" opacity="0.5"/>
+                <path d="M98 30 Q95 80 98 130" stroke="#f0a58a" stroke-width="2.5" fill="none" opacity="0.5"/>
+                <path d="M50 45 Q55 80 52 115" stroke="#3d1504" stroke-width="2" fill="none"/>
+                <path d="M110 45 Q105 80 108 115" stroke="#3d1504" stroke-width="2" fill="none"/>
+                <!-- 표정 -->
+                <circle cx="68" cy="75" r="4" fill="#ffffff"/>
+                <circle cx="92" cy="75" r="4" fill="#ffffff"/>
+                <circle cx="68" cy="75" r="2.5" fill="#301502"/>
+                <circle cx="92" cy="75" r="2.5" fill="#301502"/>
+                <path d="M74 88 Q80 94 86 88" stroke="#ffffff" stroke-width="2" fill="none" stroke-linecap="round"/>
+                <ellipse cx="60" cy="82" rx="4" ry="2.5" fill="#ff7777" opacity="0.7"/>
+                <ellipse cx="100" cy="82" rx="4" ry="2.5" fill="#ff7777" opacity="0.7"/>
+              </svg>
+            </div>
+            <button class="nut-name-btn">
+              <span class="touch-badge">👆 터치</span>
+              <span class="nut-name">피칸</span>
+            </button>
+            <p class="nut-desc">진한 갈색 줄무늬가 있어요</p>
+          </div>
+
+          <!-- 캐슈넛 카드 -->
+          <div class="nut-card" data-nut="cashew">
+            <div class="nut-img-box">
+              <svg class="nut-svg" viewBox="0 0 160 160">
+                <defs>
+                  <radialGradient id="cashewGrad" cx="30%" cy="30%" r="70%">
+                    <stop offset="0%" stop-color="#fff8db"/>
+                    <stop offset="55%" stop-color="#f5e0a3"/>
+                    <stop offset="100%" stop-color="#c9a557"/>
+                  </radialGradient>
+                </defs>
+                <!-- 바나나/초승달 모양 캐슈넛 -->
+                <path d="M65 20 C110 15, 145 55, 135 105 C130 130, 100 145, 80 140 C55 135, 60 110, 75 105 C95 100, 105 80, 95 55 C88 40, 65 42, 50 35 C42 30, 48 22, 65 20 Z" fill="url(#cashewGrad)" stroke="#927027" stroke-width="3"/>
+                <!-- 표정 -->
+                <circle cx="98" cy="65" r="4" fill="#46310a"/>
+                <circle cx="116" cy="75" r="4" fill="#46310a"/>
+                <circle cx="100" cy="63" r="1.5" fill="#ffffff"/>
+                <circle cx="118" cy="73" r="1.5" fill="#ffffff"/>
+                <path d="M102 82 Q110 88 114 80" stroke="#46310a" stroke-width="2" fill="none" stroke-linecap="round"/>
+                <ellipse cx="94" cy="72" rx="4" ry="2.5" fill="#ffaaaa" opacity="0.7"/>
+                <ellipse cx="122" cy="82" rx="4" ry="2.5" fill="#ffaaaa" opacity="0.7"/>
+              </svg>
+            </div>
+            <button class="nut-name-btn">
+              <span class="touch-badge">👆 터치</span>
+              <span class="nut-name">캐슈넛</span>
+            </button>
+            <p class="nut-desc">부드러운 구부러진 모양</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 1-2. 견과류 이름 맞추기 퀴즈 게임 -->
+      <div id="sub1-quiz" class="sub-section">
+        <div class="quiz-container">
+          <div class="quiz-header">
+            <span class="quiz-progress-badge" id="quizProgressText">문제 1 / 4</span>
+            <div class="quiz-stars" id="quizScoreStars">
+              <span class="star-slot empty">⭐</span>
+              <span class="star-slot empty">⭐</span>
+              <span class="star-slot empty">⭐</span>
+              <span class="star-slot empty">⭐</span>
+            </div>
+          </div>
+
+          <div class="quiz-body">
+            <!-- 질문 영역 (음성 재생 버튼 포함) -->
+            <div class="quiz-question-box">
+              <div class="question-title">
+                <span id="quizTargetText" class="highlight-target">호두</span>
+                <span>을(를) 찾아보세요!</span>
+                <button id="quizHearTargetBtn" class="hear-btn" title="문제 다시 듣기">🔊 다시 듣기</button>
+              </div>
+              <div class="target-clue-box" id="quizClueBox">
+                힌트: 울퉁불퉁하고 동글동글한 견과류예요!
+              </div>
+            </div>
+
+            <!-- 선택지 4개 카드 (커다란 터치 버튼) -->
+            <div class="quiz-options-grid" id="quizOptionsGrid">
+              <!-- JS로 렌더링 -->
+            </div>
+          </div>
+
+          <!-- 퀴즈 결과 안내 팝업/알림 -->
+          <div class="quiz-feedback-banner" id="quizFeedbackBanner" style="display: none;">
+            <span class="feedback-icon" id="feedbackIcon">🎉</span>
+            <span class="feedback-msg" id="feedbackMsg">딩동댕! 정답입니다! 참 잘했어요!</span>
+            <button id="quizNextBtn" class="quiz-next-btn">다음 문제 ➜</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==============================================
+         2. 두번째 페이지: 활동 1 - 견과류 포장 연습하기
+         ============================================== -->
+    <section id="page2" class="page-section">
+      <!-- 난이도 / 학습 수준별 서브탭 -->
+      <div class="sub-nav practice-tabs">
+        <button class="sub-tab-btn active" data-sub="sub2-step1">
+          🧺 1단계: 순서대로 드래그하기
+        </button>
+        <button class="sub-tab-btn" data-sub="sub2-step2">
+          🔢 2단계: 숫자 보고 드래그하기 (도움 모드)
+        </button>
+        <button class="sub-tab-btn" data-sub="sub2-step3">
+          👆 3단계: 터치로 쏙 담기 (가장 쉬운 모드)
+        </button>
+      </div>
+
+      <!-- 안내 레시피 바 (상시 표시) -->
+      <div class="recipe-bar">
+        <div class="recipe-title">
+          <span>🎯 오늘 담을 견과류:</span>
+        </div>
+        <div class="recipe-items">
+          <div class="recipe-chip" id="chipAlmond">
+            <span class="chip-dot">🌰</span>
+            <span class="chip-name">아몬드</span>
+            <span class="chip-count">4개</span>
+          </div>
+          <span class="recipe-arrow">➜</span>
+          <div class="recipe-chip" id="chipWalnut">
+            <span class="chip-dot">🌰</span>
+            <span class="chip-name">호두</span>
+            <span class="chip-count">4개</span>
+          </div>
+          <span class="recipe-arrow">➜</span>
+          <div class="recipe-chip" id="chipPecan">
+            <span class="chip-dot">🌰</span>
+            <span class="chip-name">피칸</span>
+            <span class="chip-count">2개</span>
+          </div>
+          <span class="recipe-arrow">➜</span>
+          <div class="recipe-chip" id="chipCashew">
+            <span class="chip-dot">🌰</span>
+            <span class="chip-name">캐슈넛</span>
+            <span class="chip-count">2개</span>
+          </div>
+        </div>
+        <button id="resetPracticeBtn" class="reset-action-btn">🔄 다시 담기</button>
+        <button id="checkPracticeBtn" class="confirm-action-btn">✅ 확인하기</button>
+      </div>
+
+      <!-- 2-1. 순서대로 드래그하기 모드 -->
+      <div id="sub2-step1" class="sub-section active practice-stage">
+        <div class="practice-layout">
+          <!-- 좌측: 견과류 트레이 (공급대) -->
+          <div class="tray-container">
+            <h3 class="tray-title">견과류 재료통 (봉투로 끌어당기세요)</h3>
+            <div class="tray-nuts-grid" id="trayGrid1">
+              <!-- 동적 생성 견과류 요소들 -->
+            </div>
+          </div>
+
+          <!-- 중앙/우측: 포장 봉투 드롭 영역 -->
+          <div class="bag-container">
+            <div class="bag-header">
+              <span class="bag-title">투명 포장 봉투</span>
+              <span class="bag-count-badge" id="bagCountBadge1">담은 개수: 0 / 12개</span>
+            </div>
+            
+            <div class="pouch-drop-zone" id="pouchZone1">
+              <div class="pouch-ziplock"></div>
+              <div class="pouch-inside" id="pouchInside1">
+                <div class="pouch-placeholder" id="pouchPlaceholder1">
+                  <span>이곳에 견과류를 차례대로 넣어주세요!</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- 현재 차례 가이드 배너 -->
+            <div class="turn-guide-box" id="turnGuide1">
+              <span class="turn-icon">👉</span>
+              <span class="turn-text" id="turnGuideText1">먼저 <strong>아몬드 1번째</strong>를 봉투에 넣어주세요!</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2-2. 숫자 보고 드래그하기 (도움 모드) -->
+      <div id="sub2-step2" class="sub-section practice-stage">
+        <div class="practice-layout">
+          <div class="tray-container">
+            <h3 class="tray-title">숫자 번호표가 있는 견과류 (순서대로 1,2,3..)</h3>
+            <div class="tray-nuts-grid" id="trayGrid2">
+              <!-- 동적 생성 (숫자 배지 포함) -->
+            </div>
+          </div>
+
+          <div class="bag-container">
+            <div class="bag-header">
+              <span class="bag-title">숫자 슬롯 포장 봉투</span>
+              <span class="bag-count-badge" id="bagCountBadge2">담은 개수: 0 / 12개</span>
+            </div>
+
+            <div class="pouch-drop-zone numbered-zone" id="pouchZone2">
+              <div class="pouch-ziplock"></div>
+              <!-- 번호가 매겨진 12개 슬롯 자리 -->
+              <div class="numbered-slots-grid" id="numberedSlotsGrid">
+                <!-- 아몬드 4개 자리 (1,2,3,4) -->
+                <!-- 호두 4개 자리 (5,6,7,8) -->
+                <!-- 피칸 2개 자리 (9,10) -->
+                <!-- 캐슈넛 2개 자리 (11,12) -->
+              </div>
+            </div>
+
+            <div class="turn-guide-box" id="turnGuide2">
+              <span class="turn-icon">🔢</span>
+              <span class="turn-text" id="turnGuideText2">반짝이는 <strong>1번 아몬드</strong>를 1번 자리에 쏙 넣어보세요!</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2-3. 터치로 쏙 담기 (단순 원터치 모드) -->
+      <div id="sub2-step3" class="sub-section practice-stage">
+        <div class="practice-layout">
+          <div class="tray-container">
+            <h3 class="tray-title">원터치 재료통 (견과류를 톡! 누르면 쏙 들어가요)</h3>
+            <div class="tray-nuts-grid touch-mode-grid" id="trayGrid3">
+              <!-- 터치 전용 큰 버튼들 -->
+            </div>
+          </div>
+
+          <div class="bag-container">
+            <div class="bag-header">
+              <span class="bag-title">쏙쏙 들어가는 포장 봉투</span>
+              <span class="bag-count-badge" id="bagCountBadge3">담은 개수: 0 / 12개</span>
+            </div>
+
+            <div class="pouch-drop-zone" id="pouchZone3">
+              <div class="pouch-ziplock"></div>
+              <div class="pouch-inside" id="pouchInside3">
+                <div class="pouch-placeholder" id="pouchPlaceholder3">
+                  <span>견과류를 누르면 자동으로 쏙 들어옵니다!</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="turn-guide-box" id="turnGuide3">
+              <span class="turn-icon">👆</span>
+              <span class="turn-text" id="turnGuideText3">왼쪽의 <strong>아몬드</strong>를 손가락으로 톡 눌러보세요!</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==============================================
+         3. 세번째 페이지: 활동 2 - 실제 견과류 포장하기
+         ============================================== -->
+    <section id="page3" class="page-section">
+      <!-- 난이도별 서브 네비게이션 (순서대로 포장 vs 분류된 견과류 모아 포장) -->
+      <div class="sub-nav practice-tabs">
+        <button class="sub-tab-btn active" data-sub="sub3-seq">
+          🔢 1단계: 순서대로 포장하기 (아몬드 ➜ 호두 ➜ 피칸 ➜ 캐슈넛)
+        </button>
+        <button class="sub-tab-btn" data-sub="sub3-batch">
+          🧺 2단계: 분류된 견과류 모아서 포장하기 (쉬운 모드)
+        </button>
+      </div>
+
+      <!-- 3-1. 순서대로 포장하기 (기존 단계별 포장) -->
+      <div id="sub3-seq" class="sub-section active">
+        <!-- 큼직한 작업 지시문 헤더 -->
+        <div class="work-order-card">
+          <div class="work-order-header">
+            <span class="order-badge">📋 작업 지시서</span>
+            <h2 class="order-title">견과류를 봉투에 순서대로 담고 실링기로 포장을 하세요</h2>
+            <button id="hearOrderBtn" class="hear-order-btn">🔊 지시서 듣기</button>
+          </div>
+          <div class="order-steps-bar">
+            <div class="chips-flow">
+              <button class="order-step-chip active" id="act2Chip1" data-step="1" title="아몬드 4개 검사하기로 이동">
+                <span class="step-num">1</span>
+                <span class="step-name">아몬드 4개</span>
+              </button>
+              <span class="step-arrow">➜</span>
+              <button class="order-step-chip" id="act2Chip2" data-step="2" title="호두 4개 검사하기로 이동">
+                <span class="step-num">2</span>
+                <span class="step-name">호두 4개</span>
+              </button>
+              <span class="step-arrow">➜</span>
+              <button class="order-step-chip" id="act2Chip3" data-step="3" title="피칸 2개 검사하기로 이동">
+                <span class="step-num">3</span>
+                <span class="step-name">피칸 2개</span>
+              </button>
+              <span class="step-arrow">➜</span>
+              <button class="order-step-chip" id="act2Chip4" data-step="4" title="캐슈넛 2개 검사하기로 이동">
+                <span class="step-num">4</span>
+                <span class="step-name">캐슈넛 2개</span>
+              </button>
+              <span class="step-arrow">➜</span>
+              <button class="order-step-chip" id="act2Chip5" data-step="5" title="실링기 포장으로 이동">
+                <span class="step-num">5</span>
+                <span class="step-name">실링기 포장</span>
+              </button>
+            </div>
+            <button id="act2RestartBtn" class="restart-order-btn" title="처음 1단계 아몬드 4개부터 다시 시작합니다">
+              🔄 처음부터 다시하기
+            </button>
+          </div>
+        </div>
+
+      <!-- 실제 카메라 검사 화면 레이아웃 -->
+      <div class="camera-inspection-layout">
+        <!-- 좌측: 카메라 뷰파인더 -->
+        <div class="camera-feed-card">
+          <div class="feed-header">
+            <span class="feed-status" id="cameraStatusText">🟢 실시간 카메라 검사대</span>
+            <div class="camera-buttons">
+              <button id="switchCameraBtn" class="cam-tool-btn">🔄 카메라 전환</button>
+              <button id="toggleCameraPowerBtn" class="cam-tool-btn">📷 카메라 켜기</button>
+            </div>
+          </div>
+
+          <div class="video-wrapper">
+            <video id="webcamVideo" autoplay playsinline muted></video>
+            <!-- 가상 시뮬레이터 뷰 (카메라 권한 없거나 시연용) -->
+            <div id="simulatedCameraView" class="simulated-view">
+              <div class="sim-stage-graphic" id="simStageGraphic">
+                <!-- 현재 단계 봉투 그래픽 미리보기 -->
+              </div>
+              <p class="sim-guide-text">실제 포장한 봉투를 카메라 화면 중앙에 맞춰주세요</p>
+            </div>
+
+            <!-- 카메라 오버레이 뷰파인더 가이드선 -->
+            <div class="camera-overlay-box">
+              <div class="crosshair-corner top-left"></div>
+              <div class="crosshair-corner top-right"></div>
+              <div class="crosshair-corner bottom-left"></div>
+              <div class="crosshair-corner bottom-right"></div>
+              <div class="target-inspect-label" id="inspectTargetLabel">
+                아몬드 4개 담은 봉투를 비춰주세요
+              </div>
+            </div>
+          </div>
+
+          <!-- 대형 검사 실행 버튼 -->
+          <div class="camera-actions-bar">
+            <button id="runInspectBtn" class="big-inspect-btn">
+              📸 <span id="inspectBtnText">아몬드 4개 검사하기</span>
+            </button>
+            <!-- 교사/학습 지원용 신속 테스트 컨트롤 -->
+            <div class="teacher-controls">
+              <span class="teacher-label">선생님 테스트 지원:</span>
+              <button id="forcePassBtn" class="test-pass-btn">✅ 합격</button>
+              <button id="forceFailBtn" class="test-fail-btn">❌ 불합격</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 우측: 현재 단계 지침 및 실링기 단계 전용 인터랙션 -->
+        <div class="stage-info-card">
+          <div id="nutInspectInfoBox" class="info-content active">
+            <div class="current-task-badge" id="currentTaskBadge">단계 1: 아몬드 포장</div>
+            <h3 class="current-task-heading" id="currentTaskHeading">아몬드 4개를 포장하고 비춰주세요</h3>
+            
+            <div class="reference-sample-card">
+              <span class="sample-title">👀 정답 견본 미리보기</span>
+              <div class="sample-img-box" id="samplePreviewBox">
+                <!-- 정답 견본 SVG -->
+              </div>
+              <p class="sample-desc" id="sampleDescText">봉투 아래에 아몬드 4개가 예쁘게 담겨 있어야 해요.</p>
+            </div>
+
+            <div class="inspection-result-box" id="inspectResultBox" style="display: none;">
+              <div class="result-icon-large" id="resultIconLarge">⭕</div>
+              <h4 class="result-title-large" id="resultTitleLarge">딩동댕! 합격입니다!</h4>
+              <p class="result-msg-large" id="resultMsgLarge">참 잘했어요! 다음 견과류를 포장해주세요.</p>
+              <button id="nextNutStageBtn" class="next-stage-btn">다음 단계로 이동 ➜</button>
+            </div>
+          </div>
+
+          <!-- 5단계 실링기 전용 화면 -->
+          <div id="sealerStepBox" class="info-content" style="display: none;">
+            <div class="current-task-badge bg-sealer">단계 5: 실링기 포장</div>
+            <h3 class="current-task-heading">실링기로 봉투 입구를 꼭 눌러주세요!</h3>
+            
+            <div class="sealer-machine-interactive">
+              <div class="sealer-body" id="sealerBody">
+                <div class="sealer-top-bar" id="sealerTopBar"></div>
+                <div class="sealer-slot">
+                  <div class="sealed-pouch-preview" id="sealedPouchPreview">
+                    <!-- 12개 견과류가 다 들어있는 봉투 -->
+                  </div>
+                </div>
+                <div class="sealer-bottom-bar"></div>
+              </div>
+              <div class="sealer-lamp" id="sealerLamp">준비</div>
+            </div>
+
+            <button id="pressSealerBtn" class="big-sealer-btn">
+              ⚡ 실링기 누르기 (포장 완성)
+            </button>
+            <p class="sealer-tip">실링기로 포장을 한 후 포장검수대로 가세요!</p>
+          </div>
+        </div>
+      </div>
+      </div> <!-- sub3-seq 닫기 -->
+
+      <!-- 3-2. 분류된 견과류 모아서 포장하기 (새로 추가된 쉬운 모드) -->
+      <div id="sub3-batch" class="sub-section">
+        <!-- 작업 지시서 카드 -->
+        <div class="work-order-card">
+          <div class="work-order-header">
+            <span class="order-badge bg-gold">📋 작업 지시서</span>
+            <h2 class="order-title">분류된 견과류를 봉투에 담고 포장하세요</h2>
+            <button id="hearBatchOrderBtn" class="hear-order-btn">🔊 지시서 듣기</button>
+          </div>
+          <div class="batch-recipe-summary">
+            <span class="batch-summary-label">👉 포장 봉투에 쏙 넣을 분류 견과류:</span>
+            <div class="batch-nut-pills">
+              <span class="batch-pill">🌰 아몬드 4개</span>
+              <span class="batch-pill">🌰 호두 4개</span>
+              <span class="batch-pill">🌰 피칸 2개</span>
+              <span class="batch-pill">🌰 캐슈넛 2개</span>
+              <span class="batch-pill total-pill">총 12개</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 카메라 검사 레이아웃 -->
+        <div class="camera-inspection-layout">
+          <!-- 좌측: 카메라 뷰파인더 -->
+          <div class="camera-feed-card">
+            <div class="feed-header">
+              <span class="feed-status">🟢 실시간 카메라 검사대 (분류 포장)</span>
+              <div class="camera-buttons">
+                <button id="batchSwitchCameraBtn" class="cam-tool-btn">🔄 카메라 전환</button>
+                <button id="batchToggleCameraBtn" class="cam-tool-btn">📷 카메라 켜기</button>
+              </div>
+            </div>
+
+            <div class="video-wrapper">
+              <video id="batchWebcamVideo" autoplay playsinline muted></video>
+              <div id="batchSimulatedView" class="simulated-view">
+                <div class="batch-sim-stage-graphic" id="batchSimGraphic">
+                  <!-- 12개 견과류 그래픽 -->
+                </div>
+                <p class="sim-guide-text">분류된 견과류를 담은 봉투를 화면 중앙에 비춰주세요</p>
+              </div>
+
+              <div class="camera-overlay-box">
+                <div class="crosshair-corner top-left"></div>
+                <div class="crosshair-corner top-right"></div>
+                <div class="crosshair-corner bottom-left"></div>
+                <div class="crosshair-corner bottom-right"></div>
+                <div class="target-inspect-label">
+                  분류된 견과류가 담긴 봉투를 비춰주세요
+                </div>
+              </div>
+            </div>
+
+            <!-- 대형 검사 실행 버튼 -->
+            <div class="camera-actions-bar">
+              <button id="batchInspectBtn" class="big-inspect-btn bg-gold-action">
+                📸 분류된 견과류 검사하기
+              </button>
+              <div class="teacher-controls">
+                <span class="teacher-label">선생님 테스트:</span>
+                <button id="batchForcePassBtn" class="test-pass-btn">✅ 합격</button>
+                <button id="batchForceFailBtn" class="test-fail-btn">❌ 불합격</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- 우측: 단계 지침 및 검사 결과 카드 -->
+          <div class="stage-info-card">
+            <div class="info-content active">
+              <div class="current-task-badge bg-gold">쉬운 모드: 분류 견과류 포장</div>
+              <h3 class="current-task-heading">분류된 견과류를 봉투에 담고 비춰주세요</h3>
+
+              <div class="reference-sample-card">
+                <span class="sample-title">👀 올바른 포장 모습</span>
+                <div class="sample-img-box" id="batchSamplePreviewBox">
+                  <!-- 12개 정답 그래픽 -->
+                </div>
+                <p class="sample-desc">아몬드 4개, 호두 4개, 피칸 2개, 캐슈넛 2개가 모두 봉투에 쏙 들어있어야 해요!</p>
+              </div>
+
+              <!-- 결과 피드백 박스 -->
+              <div class="inspection-result-box" id="batchInspectResultBox" style="display: none;">
+                <div class="result-icon-large" id="batchResultIcon">⭕</div>
+                <h4 class="result-title-large" id="batchResultTitle">딩동댕! 합격입니다!</h4>
+                <p class="result-msg-large" id="batchResultMsg">분류된 견과류를 봉투에 아주 잘 담았습니다!</p>
+                <div style="display: flex; gap: 8px; justify-content: center; margin-top: 10px;">
+                  <button id="batchGoToSealerBtn" class="next-stage-btn">⚡ 실링기로 포장하러 가기 ➜</button>
+                  <button id="batchRecheckBtn" class="cam-tool-btn" style="padding: 10px 16px; font-size: 1rem;">🔄 다시 검사</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==============================================
+         4. 네번째 페이지: 활동 3 - 품질 검수 및 라벨지 붙이기
+         ============================================== -->
+    <section id="page4" class="page-section">
+      <div class="work-order-card">
+        <div class="work-order-header">
+          <span class="order-badge bg-gold">🏆 최종 활동 3</span>
+          <h2 class="order-title">품질 검수 및 포장 라벨지 붙이기</h2>
+          <button id="hearOrder4Btn" class="hear-order-btn">🔊 활동 안내 듣기</button>
+        </div>
+        <p class="order-subtext">완성된 견과류 봉투를 비춰 최종 합격 검수를 받고, 영양 가득 라벨지를 붙여 제품을 완성해보세요!</p>
+      </div>
+
+      <div class="act4-container">
+        <!-- 4-1단계: 최종 카메라 검수 영역 -->
+        <div class="act4-inspect-box" id="act4InspectStage">
+          <div class="act4-camera-card">
+            <div class="feed-header">
+              <h3 class="card-subtitle">📷 완성한 포장 봉투를 카메라에 비춰주세요</h3>
+              <div class="camera-buttons">
+                <button id="act4SwitchCameraBtn" class="cam-tool-btn">🔄 카메라 전환</button>
+                <button id="act4ToggleCameraBtn" class="cam-tool-btn">📷 카메라 켜기</button>
+              </div>
+            </div>
+            <div class="video-wrapper act4-video-box">
+              <video id="act4WebcamVideo" autoplay playsinline muted></video>
+              <div id="act4SimulatedView" class="simulated-view">
+                <div class="act4-sim-pouch">
+                  <!-- 12개 견과류 완제품 그래픽 -->
+                </div>
+                <p class="sim-guide-text">포장지와 실링된 부분을 화면에 알맞게 비춰주세요</p>
+              </div>
+              <div class="camera-overlay-box">
+                <div class="target-inspect-label">최종 포장지 품질 검수 중</div>
+              </div>
+            </div>
+
+            <div class="act4-action-bar">
+              <button id="act4CheckBtn" class="big-inspect-btn bg-purple">
+                🔍 최종 품질 검수하기
+              </button>
+              <button id="act4RecheckBtn" class="recheck-action-btn" title="품질 검수를 초기화하고 다시 진행합니다">
+                🔄 품질 검수 다시하기
+              </button>
+              <div class="teacher-controls">
+                <span class="teacher-label">테스트:</span>
+                <button id="act4ForcePassBtn" class="test-pass-btn">✅ 합격</button>
+                <button id="act4ForceFailBtn" class="test-fail-btn">❌ 불합격</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- 검수 결과 피드백 카드 -->
+          <div class="act4-result-card" id="act4ResultCard">
+            <div class="inspect-checklist">
+              <h4>📋 최종 수량 체크리스트</h4>
+              <ul class="checklist-items">
+                <li><span class="check-icon">✔️</span> 아몬드 4개 확인</li>
+                <li><span class="check-icon">✔️</span> 호두 4개 확인</li>
+                <li><span class="check-icon">✔️</span> 피칸 2개 확인</li>
+                <li><span class="check-icon">✔️</span> 캐슈넛 2개 확인</li>
+                <li><span class="check-icon">✔️</span> 실링기 밀봉 확인</li>
+              </ul>
+            </div>
+            
+            <div class="act4-outcome-box" id="act4OutcomeBox" style="display: none;">
+              <!-- 합격 / 불합격 동적 렌더링 -->
+            </div>
+          </div>
+        </div>
+
+        <!-- 4-2단계: 라벨지 붙이기 대형 인터랙션 영역 (합격 후 전환) -->
+        <div class="act4-labeling-stage" id="act4LabelingStage" style="display: none;">
+          <div class="labeling-instruction">
+            <h3>🎉 축하합니다! 최종 합격입니다!</h3>
+            <p>화면의 <strong>[하루 건강 견과 라벨 스티커]</strong>를 눌러 봉투 중앙에 착! 붙여주세요.</p>
+          </div>
+
+          <div class="labeling-workbench">
+            <!-- 완성 봉투 -->
+            <div class="target-finished-pouch" id="finishedPouchTarget">
+              <div class="pouch-sealed-line"></div>
+              <div class="pouch-nuts-inside" id="pouchNutsInsideFinal">
+                <!-- 견과류 알록달록 배치 -->
+              </div>
+              <!-- 라벨 붙는 자리 -->
+              <div class="label-drop-spot" id="labelDropSpot">
+                <span class="drop-spot-text">이곳에 라벨지를 붙이세요!</span>
+              </div>
+            </div>
+
+            <!-- 스티커 보관대 -->
+            <div class="sticker-dock">
+              <span class="sticker-dock-title">🏷️ 라벨지 스티커</span>
+              <div class="sticker-item" id="draggableSticker" draggable="true">
+                <div class="sticker-content">
+                  <div class="sticker-crown">👑</div>
+                  <div class="sticker-brand">자연을 담은</div>
+                  <div class="sticker-name">하루 건강 견과</div>
+                  <div class="sticker-tags">#아몬드 #호두 #피칸 #캐슈넛</div>
+                  <div class="sticker-cert">우수 품질 인증 🏅</div>
+                </div>
+              </div>
+              <button id="autoAttachLabelBtn" class="attach-touch-btn">👆 터치해서 바로 붙이기</button>
+            </div>
+          </div>
+
+          <!-- 최종 완성 팡파레 & 수료증 모달 -->
+          <div class="final-celebration-banner" id="finalCelebrationBanner" style="display: none;">
+            <div class="celebration-content">
+              <span class="party-emoji">🎊 🥳 🎖️</span>
+              <h2>최고의 견과류 포장 마스터 탄생!</h2>
+              <p>아몬드, 호두, 피칸, 캐슈넛 포장부터 품질 검수와 라벨 붙이기까지 모두 완벽하게 해냈습니다!</p>
+              <div class="celebration-buttons">
+                <button id="restartAllBtn" class="celeb-btn restart">처음부터 다시하기 🔄</button>
+                <button id="showCertBtn" class="celeb-btn cert">칭찬 상장 보기 📜</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==============================================
+       공통 모달: 불합격 시 올바른 포장 예시 팝업
+       ============================================== -->
+  <div class="app-modal" id="sampleGuideModal" style="display: none;">
+    <div class="modal-backdrop"></div>
+    <div class="modal-dialog">
+      <div class="modal-header bg-danger">
+        <span class="modal-icon">⚠️</span>
+        <h3 id="modalTitle">불합격입니다. 다시 포장하세요!</h3>
+        <button class="modal-close-btn" id="closeModalBtn">✖</button>
+      </div>
+      <div class="modal-body">
+        <p class="modal-instruction" id="modalInstruction">
+          올바른 개수를 담은 아래 견본 화면을 보고 다시 포장해 보세요.
+        </p>
+        <div class="modal-sample-preview" id="modalSamplePreview">
+          <!-- 정답 예시 화면 그래픽 (아몬드 4개 / 호두 4개 등) -->
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button id="modalConfirmBtn" class="modal-action-btn">네! 다시 포장해볼게요 ✊</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 공통 모달: 확인하기 점수 팝업 -->
+  <div class="app-modal" id="scoreModal" style="display: none;">
+    <div class="modal-backdrop"></div>
+    <div class="modal-dialog">
+      <div class="modal-header bg-success">
+        <span class="modal-icon">💯</span>
+        <h3 id="scoreModalTitle">견과류 포장 연습 결과</h3>
+        <button class="modal-close-btn" id="closeScoreModalBtn">✖</button>
+      </div>
+      <div class="modal-body text-center">
+        <div class="score-circle">
+          <span class="score-number" id="modalScoreNum">100</span>
+          <span class="score-unit">점</span>
+        </div>
+        <p class="score-praise" id="modalScorePraise">아주 훌륭해요! 모든 견과류를 순서대로 잘 담았어요!</p>
+        <div class="sticker-reward">
+          <span class="reward-stamp">💮 참 잘했어요!</span>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button id="scoreModalConfirmBtn" class="modal-action-btn bg-success">활동 2로 넘어가기 ➜</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 칭찬 상장 모달 -->
+  <div class="app-modal" id="certificateModal" style="display: none;">
+    <div class="modal-backdrop"></div>
+    <div class="modal-dialog cert-dialog">
+      <div class="modal-header bg-gold">
+        <span class="modal-icon">🏅</span>
+        <h3>칭찬 수료증</h3>
+        <button class="modal-close-btn" id="closeCertModalBtn">✖</button>
+      </div>
+      <div class="modal-body">
+        <div class="certificate-frame">
+          <div class="cert-ribbon">제 2026-01호</div>
+          <h2 class="cert-title">견과류 포장 달인 상</h2>
+          <p class="cert-recipient">멋진 1학년 학생 앞</p>
+          <p class="cert-body">
+            위 학생은 특수학교 견과류 포장하기 직업훈련 과정에서<br>
+            <strong>아몬드 4개, 호두 4개, 피칸 2개, 캐슈넛 2개</strong>를<br>
+            순서대로 바르게 담고, 품질 검수와 라벨 붙이기까지<br>
+            성실하고 훌륭하게 수행하였으므로 이 상장을 수여합니다.
+          </p>
+          <div class="cert-date">2026년 자연 담은 포장 교실</div>
+          <div class="cert-seal">참 잘했어요💮</div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button id="certPrintBtn" class="modal-action-btn">🖨️ 인쇄 / 닫기</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 캔버스 효과 및 오디오 스크립트 연결 -->
+  <canvas id="confettiCanvas"></canvas>
+
+  <script src="app.js"></script>
+</body>
+</html>
